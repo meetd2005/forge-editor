@@ -61,6 +61,7 @@ export function EnhancedEditor({ content, onChange }: EnhancedEditorProps) {
         },
       }),
     ],
+    immediatelyRender: false,
     content,
     editorProps: {
       attributes: {
