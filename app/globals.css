@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Tiptap Editor Styles */
+.ProseMirror {
+  outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror .is-empty::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Prose styling for the editor - Very tight spacing */
+.prose {
+  @apply text-gray-900 max-w-none;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mt-3 mb-1;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold mt-2 mb-1;
+}
+
+.prose h3 {
+  @apply text-xl font-bold mt-2 mb-0.5;
+}
+
+.prose p {
+  @apply mb-1 leading-snug;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-2 pl-6;
+}
+
+.prose li {
+  @apply mb-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-700 my-2;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-2;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Code block styling */
+.ProseMirror pre {
+  background: #1e1e1e;
+  color: #f8f8f2;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, "Courier New", monospace;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid #333;
+}
+
+.ProseMirror pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Horizontal rule styling */
+.ProseMirror hr {
+  border: none;
+  border-top: 2px solid #e5e7eb;
+  margin: 2rem 0;
+  cursor: pointer;
+}
+
+.ProseMirror hr:hover {
+  border-top-color: #9ca3af;
+}
+
+.ProseMirror hr.ProseMirror-selectednode {
+  border-top-color: #3b82f6;
+}
+
+/* Very tight text spacing */
+.ProseMirror p + p {
+  margin-top: 0.25rem;
+}
+
+.ProseMirror h1 + p,
+.ProseMirror h2 + p,
+.ProseMirror h3 + p {
+  margin-top: 0.5rem;
+}
+
+.ProseMirror li p {
+  margin-bottom: 0;
+}
+
+/* Minimal line height for compact text */
+.ProseMirror {
+  line-height: 1.4;
+}
+
+.ProseMirror p {
+  line-height: 1.45;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3 {
+  line-height: 1.2;
+}
+
+/* Remove extra spacing from lists */
+.ProseMirror ul li,
+.ProseMirror ol li {
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.25rem;
+}
+
+/* Tighter blockquote spacing */
+.ProseMirror blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.ProseMirror blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Remove default prose margins */
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+/* YouTube embed styling */
+.ProseMirror iframe[src*="youtube.com"],
+.ProseMirror iframe[src*="youtu.be"] {
+  @apply w-full max-w-2xl mx-auto my-4 rounded-lg;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+/* Responsive YouTube embeds */
+@media (max-width: 768px) {
+  .ProseMirror iframe[src*="youtube.com"],
+  .ProseMirror iframe[src*="youtu.be"] {
+    @apply w-full;
+  }
+}
+
+/* Image resize handles - ensure they're always visible and properly positioned */
+.ProseMirror [data-node-view-wrapper] {
+  position: relative;
+}
+
+/* Prevent image selection conflicts */
+.ProseMirror img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Ensure resize handles are above other content */
+.ProseMirror [data-node-view-wrapper] > div {
+  position: relative;
+  z-index: 1;
+}
